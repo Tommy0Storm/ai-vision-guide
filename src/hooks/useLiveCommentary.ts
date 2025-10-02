@@ -6,41 +6,95 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { GoogleGenAI, Modality } from "@google/genai";
 import { decode, decodeAudioData, createPCMBlob } from '../utils/audioUtils';
+import { orientationTracker, type OrientationData } from '../utils/orientationTracker';
+import { audioFeedback } from '../utils/audioFeedback';
+import { analyzeImageQuality, extractImageDataFromVideo, type ImageQualityResult } from '../utils/imageQuality';
+import { haptics } from '../utils/haptics';
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-const initialSystemPrompt = `You are an AI vision assistant named 'Aura'. Your ONLY job is to describe what you see in the images being sent to you from the user's screen or camera.
+const normalSystemPrompt = `You are 'Aura', an AI vision assistant for visually impaired and blind users. Your purpose is to be their eyes, providing real-time visual descriptions.
+
+**DEFAULT MODE:**
+- Describe what you see in detail
+- Read visible text clearly, in logical order
+- Describe UI elements, buttons, menus with their positions
+- Answer user questions directly and immediately
+- Keep responses conversational but informative
+
+**IMAGE QUALITY CHECK:**
+- If image is blurry, very dark, or overexposed: Say "Camera needs adjustment" then give guidance
+- Too dark/blurry: "Lift phone up" or "Move to brighter area"
+- Too bright: "Move away from light" or "Tilt phone down"
+- Camera blocked/obscured: "Camera obscured - clear view needed"
+
+**When camera starts**: Say "Camera active. I can see [brief description]."
+
+REMEMBER: You are someone's eyes. Be accurate, clear, and helpful.`;
+
+const navigationSystemPrompt = `You are 'Aura' in NAVIGATION MODE. Give SHORT, CLEAR walking directions with DISTANCE ESTIMATES.
 
 **CRITICAL RULES:**
-1. **ONLY describe visual content:** Describe ONLY what you can see in the images sent to you. Do NOT talk about emails, documents, registries, or anything else unless you can ACTUALLY SEE them in the current image.
+1. **BE BRIEF**: Use 3-5 word commands maximum
+2. **ALWAYS INCLUDE DISTANCE**: Estimate distance to nearest obstacle/hazard in meters or feet
+3. **IMMEDIATE HAZARDS**: "STOP. Wall one meter" or "STOP. Stairs two feet"
+4. **URGENCY BY DISTANCE**:
+   - Under 1 meter (3 feet): "STOP" + hazard
+   - 1-3 meters (3-10 feet): State hazard + distance
+   - Over 3 meters (10+ feet): "Clear ahead" or direction
+5. **CLEAR DIRECTIONS**: "Turn left", "Move right", "Door straight"
+6. **CLOCK POSITIONS**: "Obstacle two o'clock, two meters"
 
-2. **Initial image:** When you receive the first image, immediately say "I can see [describe exactly what's visible in the image]."
+**IMAGE QUALITY - PRIORITY CHECK:**
+- If image blurry/dark: "Lift phone up"
+- If too bright: "Tilt phone down"
+- If camera obscured: "Camera blocked. Adjust angle"
+- Check BEFORE giving navigation commands
 
-3. **Continuous description:** Every 5-10 seconds, briefly describe what's currently visible on screen. For example: "The screen shows [specific content]."
+**DISTANCE EXAMPLES:**
+- "STOP. Wall half meter"
+- "Person ahead. Two meters"
+- "Clear path. Five meters"
+- "Stairs down. One meter"
+- "Door straight. Three meters"
+- "Obstacle right. Four feet"
 
-4. **Changes:** When the screen content changes, describe the new content: "Now I see [new content]."
+**URGENCY LEVELS:**
+- CRITICAL (< 1m): "STOP. [hazard] [distance]"
+- HIGH (1-2m): "[Hazard] ahead. [distance]"
+- MEDIUM (2-3m): "[Object]. [distance]"
+- LOW (3m+): "Clear ahead" or direction
 
-5. **No assumptions:** DO NOT make assumptions, hallucinate, or talk about things not visible in the images. If the screen is blank, say "The screen appears blank."
+**DO NOT:**
+- Give long explanations
+- Describe colors or unnecessary details
+- Omit distance measurements
+- Repeat unless asked
 
-6. **User questions:** If the user asks about something on screen, describe what you SEE in that area.
+**SAFETY FIRST**: Image quality → Closer objects = MORE URGENT. Always estimate distance. Keep under 5 words.
 
-7. **Be literal:** Describe exactly what's visible - text, buttons, images, windows, colors, layouts.
-
-8. **Audio only:** Your responses are converted to speech. Be clear and concise.
-
-REMEMBER: You can ONLY see what's in the images sent to you. Describe ONLY what you actually see.`;
+You are a distance-aware walking GPS. SHORT. CLEAR. MEASURED. SAFE.`;
 
 
-const FRAME_RATE = 1 / 3; // Send frame every 3 seconds (0.33 fps)
+const FRAME_RATE = 1 / 2; // Send frame every 2 seconds (0.5 fps) - faster for navigation
 const JPEG_QUALITY = 0.7;
+const AUDIO_BUFFER_GAP_MS = 80; // Safety margin between audio chunks to prevent stuttering
 
 /**
  * Custom hook to manage all Gemini Live API interactions for commentary.
  */
+export interface ChatMessage {
+    type: 'user' | 'ai';
+    text: string;
+    timestamp: Date;
+}
+
 export function useLiveCommentary() {
     const [commentaryStatus, setCommentaryStatus] = useState('');
     const [isSessionReady, setIsSessionReady] = useState(false);
     const [isMicMuted, setIsMicMuted] = useState(false); // Changed to false - mic active by default
+    const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+    const [isNavigationMode, setIsNavigationMode] = useState(false);
     const outputAudioCtxRef = useRef<AudioContext | null>(null);
     const inputAudioCtxRef = useRef<AudioContext | null>(null);
     const liveSessionRef = useRef<any | null>(null);
@@ -48,7 +102,7 @@ export function useLiveCommentary() {
     const isAudioPlayingRef = useRef(false);
     const activeSourcesRef = useRef(new Set<AudioBufferSourceNode>());
     const isMicMutedRef = useRef(false); // Add ref to track mute state without stale closures
-    
+
     // Refs for screen and audio input streaming
     const screenStreamRef = useRef<MediaStream | null>(null);
     const cameraStreamRef = useRef<MediaStream | null>(null);
@@ -62,11 +116,59 @@ export function useLiveCommentary() {
     const messageQueueRef = useRef<any[]>([]);
     const isProcessingQueueRef = useRef(false);
 
+    // Barge-in detection refs
+    const userSpeechDetectedRef = useRef(false);
+    const lastUserSpeechTimeRef = useRef(0);
+    const SPEECH_ENERGY_THRESHOLD = 0.01; // Adjust based on testing
+    const SPEECH_COOLDOWN_MS = 1000; // Prevent multiple triggers
+
+    // Distance-based urgency tracking
+    const [detectedDistance, setDetectedDistance] = useState<number | null>(null);
+    const [urgencyLevel, setUrgencyLevel] = useState<'critical' | 'high' | 'medium' | 'low'>('low');
+
+    // Orientation and image quality tracking
+    const [deviceOrientation, setDeviceOrientation] = useState<OrientationData | null>(null);
+    const [imageQuality, setImageQuality] = useState<ImageQualityResult | null>(null);
+    const orientationCheckIntervalRef = useRef<number | null>(null);
+
+    // Audio health tracking
+    const audioChunkCounterRef = useRef(0);
+    const micChunkCounterRef = useRef(0);
+    const lastAudioReceivedRef = useRef(0);
+
     const initAudioContexts = useCallback(async () => {
-        if (!outputAudioCtxRef.current) outputAudioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
-        if (!inputAudioCtxRef.current) inputAudioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
-        if (outputAudioCtxRef.current.state === 'suspended') { try { await outputAudioCtxRef.current.resume(); } catch (e) { console.warn("Output AudioContext resume failed:", e); throw e; } }
-        if (inputAudioCtxRef.current.state === 'suspended') { try { await inputAudioCtxRef.current.resume(); } catch (e) { console.warn("Input AudioContext resume failed:", e); throw e; } }
+        // Initialize output audio context with larger buffer for stability
+        if (!outputAudioCtxRef.current) {
+            outputAudioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({
+                sampleRate: 24000,
+                latencyHint: 'playback' // Optimize for stable playback over low latency
+            });
+        }
+        // Initialize input audio context with optimal settings
+        if (!inputAudioCtxRef.current) {
+            inputAudioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({
+                sampleRate: 16000,
+                latencyHint: 'interactive' // Low latency for real-time mic input
+            });
+        }
+        if (outputAudioCtxRef.current.state === 'suspended') {
+            try {
+                await outputAudioCtxRef.current.resume();
+                console.log("Output AudioContext resumed");
+            } catch (e) {
+                console.warn("Output AudioContext resume failed:", e);
+                throw e;
+            }
+        }
+        if (inputAudioCtxRef.current.state === 'suspended') {
+            try {
+                await inputAudioCtxRef.current.resume();
+                console.log("Input AudioContext resumed");
+            } catch (e) {
+                console.warn("Input AudioContext resume failed:", e);
+                throw e;
+            }
+        }
     }, []);
 
     const stopAndClearAudio = useCallback(() => {
@@ -74,6 +176,109 @@ export function useLiveCommentary() {
         activeSourcesRef.current.clear();
         isAudioPlayingRef.current = false;
     }, []);
+
+    // Parse distance from AI text and set urgency
+    const parseDistanceAndSetUrgency = useCallback((text: string) => {
+        const lowerText = text.toLowerCase();
+
+        // Extract distance in meters or feet
+        const meterMatch = lowerText.match(/(\d+\.?\d*)\s*(meter|metre|m\b)/i);
+        const feetMatch = lowerText.match(/(\d+\.?\d*)\s*(feet|foot|ft\b)/i);
+
+        let distanceInMeters: number | null = null;
+
+        if (meterMatch) {
+            distanceInMeters = parseFloat(meterMatch[1]);
+        } else if (feetMatch) {
+            distanceInMeters = parseFloat(feetMatch[1]) * 0.3048; // Convert feet to meters
+        }
+
+        // Detect "half meter" or "one and a half"
+        if (lowerText.includes('half meter') || lowerText.includes('half metre')) {
+            distanceInMeters = 0.5;
+        }
+
+        setDetectedDistance(distanceInMeters);
+
+        // Set urgency level based on distance
+        if (distanceInMeters !== null) {
+            let newUrgency: 'critical' | 'high' | 'medium' | 'low';
+            if (distanceInMeters < 1) {
+                newUrgency = 'critical';
+            } else if (distanceInMeters < 2) {
+                newUrgency = 'high';
+            } else if (distanceInMeters < 3) {
+                newUrgency = 'medium';
+            } else {
+                newUrgency = 'low';
+            }
+
+            setUrgencyLevel(newUrgency);
+            console.log(`📏 Distance detected: ${distanceInMeters.toFixed(1)}m - Urgency: ${newUrgency}`);
+
+            // Play distance-coded audio feedback and haptics in navigation mode
+            if (isNavigationMode) {
+                audioFeedback.playDistanceBeep(distanceInMeters);
+                haptics.vibrateForUrgency(newUrgency);
+
+                // Play attention alert for critical distances
+                if (newUrgency === 'critical') {
+                    audioFeedback.playAttentionAlert();
+                    haptics.vibrateAlert();
+                }
+            }
+        }
+
+        // Check for STOP command
+        if (lowerText.includes('stop')) {
+            setUrgencyLevel('critical');
+            console.log('🛑 CRITICAL: STOP command detected');
+
+            // Play critical alert and haptics for STOP commands
+            if (isNavigationMode) {
+                audioFeedback.playAttentionAlert();
+                haptics.vibrateAlert();
+            }
+        }
+    }, [isNavigationMode]);
+
+    // Detect user speech energy for barge-in
+    const detectUserSpeech = useCallback((audioData: Int16Array) => {
+        // Calculate RMS (root mean square) energy
+        let sum = 0;
+        for (let i = 0; i < audioData.length; i++) {
+            const normalized = audioData[i] / 32768.0; // Normalize to -1 to 1
+            sum += normalized * normalized;
+        }
+        const rms = Math.sqrt(sum / audioData.length);
+
+        const now = Date.now();
+        const timeSinceLastSpeech = now - lastUserSpeechTimeRef.current;
+
+        // If speech detected above threshold and AI is currently speaking
+        if (rms > SPEECH_ENERGY_THRESHOLD &&
+            isAudioPlayingRef.current &&
+            timeSinceLastSpeech > SPEECH_COOLDOWN_MS &&
+            !isMicMutedRef.current) {
+
+            console.log("🛑 BARGE-IN DETECTED - User is speaking, stopping AI audio");
+            lastUserSpeechTimeRef.current = now;
+
+            // Immediately stop all AI audio playback
+            stopAndClearAudio();
+
+            // Clear the message queue to prevent stale audio from playing
+            messageQueueRef.current = [];
+
+            // Reset the next start time
+            if (outputAudioCtxRef.current) {
+                nextStartTimeRef.current = outputAudioCtxRef.current.currentTime;
+            }
+
+            // Update status
+            setCommentaryStatus(isSessionReady ? "👂 Listening..." : "⚠️ Disconnected");
+        }
+    }, [stopAndClearAudio, isSessionReady]);
 
     const processMessageQueue = useCallback(async () => {
         if (isProcessingQueueRef.current || messageQueueRef.current.length === 0) return;
@@ -92,20 +297,99 @@ export function useLiveCommentary() {
                 messageQueueRef.current = []; // Discard rest of the stale audio chunks
             }
             
+            // Handle user turn (speech transcript from microphone)
+            const userTurn = message.serverContent?.turnComplete;
+            if (userTurn) {
+                console.log("👤 User turn detected:", userTurn);
+            }
+
+            // Check for user speech transcript
+            const userMessage = message.serverContent?.modelTurn?.parts?.find((p: any) =>
+                p.text && message.serverContent?.modelTurn?.role === 'user'
+            );
+            if (userMessage?.text) {
+                const userText = userMessage.text;
+                console.log(`🎤 User said: "${userText}"`);
+
+                setChatMessages(prev => [...prev.slice(-49), {
+                    type: 'user',
+                    text: userText,
+                    timestamp: new Date()
+                }]);
+            }
+
             // Process audio if present in the message
             if (outputAudioCtxRef.current?.state === 'running') {
                 const modelTurn = message.serverContent?.modelTurn;
+
+                // Extract text from AI response for chat display
+                const textPart = modelTurn?.parts.find((p: any) => p.text);
+                if (textPart?.text && modelTurn?.role !== 'user') {
+                    const aiText = textPart.text;
+
+                    setChatMessages(prev => [...prev.slice(-49), {
+                        type: 'ai',
+                        text: aiText,
+                        timestamp: new Date()
+                    }]);
+
+                    // Parse distance and set urgency when in navigation mode
+                    parseDistanceAndSetUrgency(aiText);
+
+                    // Voice command detection - check for navigation mode activation
+                    const lowerText = textPart.text.toLowerCase();
+                    if (lowerText.includes('navigation mode') ||
+                        lowerText.includes('start navigation') ||
+                        lowerText.includes('activate navigation')) {
+                        console.log("📍 Navigation mode activated via voice command");
+                        setIsNavigationMode(true);
+                        setCommentaryStatus("🧭 Navigation Mode");
+                    } else if (lowerText.includes('stop navigation') ||
+                               lowerText.includes('exit navigation') ||
+                               lowerText.includes('normal mode')) {
+                        console.log("📍 Navigation mode deactivated");
+                        setIsNavigationMode(false);
+                        setCommentaryStatus("🎙️ Normal Mode");
+                    }
+                }
+
                 const audioPart = modelTurn?.parts.find((p: any) => p.inlineData?.mimeType?.startsWith('audio/'));
-                
+
                 if (audioPart?.inlineData?.data) {
-                    if (!isAudioPlayingRef.current) nextStartTimeRef.current = Math.max(nextStartTimeRef.current, outputAudioCtxRef.current.currentTime);
+                    audioChunkCounterRef.current++;
+                    const chunkNumber = audioChunkCounterRef.current;
+                    lastAudioReceivedRef.current = Date.now();
+
+                    // Calculate safe start time with buffer gap to prevent stuttering
+                    const safetyMarginSeconds = AUDIO_BUFFER_GAP_MS / 1000;
+                    const currentTime = outputAudioCtxRef.current.currentTime;
+
+                    if (!isAudioPlayingRef.current) {
+                        // First chunk: add safety margin
+                        nextStartTimeRef.current = Math.max(
+                            nextStartTimeRef.current,
+                            currentTime + safetyMarginSeconds
+                        );
+                        console.log(`🎵 Starting first audio chunk #${chunkNumber} at T+${(nextStartTimeRef.current - currentTime).toFixed(3)}s`);
+                    } else {
+                        // Ensure we don't schedule in the past
+                        if (nextStartTimeRef.current < currentTime) {
+                            console.warn(`⚠️ Buffer underrun detected! Adjusting schedule from ${nextStartTimeRef.current.toFixed(3)}s to ${(currentTime + safetyMarginSeconds).toFixed(3)}s`);
+                            nextStartTimeRef.current = currentTime + safetyMarginSeconds;
+                        }
+                    }
+
                     isAudioPlayingRef.current = true;
                     setCommentaryStatus(`🎙️ Speaking...`);
-        
+
                     const audioBytes = decode(audioPart.inlineData.data);
+                    console.log(`📥 Received audio chunk #${chunkNumber}, size: ${audioBytes.length} bytes`);
+
                     const audioBuffer = await decodeAudioData(audioBytes, outputAudioCtxRef.current, 24000, 1);
                     const source = outputAudioCtxRef.current.createBufferSource();
                     source.buffer = audioBuffer;
+
+                    console.log(`🔊 Scheduling chunk #${chunkNumber} at ${nextStartTimeRef.current.toFixed(3)}s, duration: ${audioBuffer.duration.toFixed(3)}s`);
                     
                     source.onended = () => {
                         activeSourcesRef.current.delete(source);
@@ -166,8 +450,13 @@ export function useLiveCommentary() {
     const stopCameraStream = useCallback(async () => {
         if (frameIntervalRef.current) { window.clearInterval(frameIntervalRef.current); frameIntervalRef.current = null; }
         if (promptIntervalRef.current) { window.clearInterval(promptIntervalRef.current); promptIntervalRef.current = null; }
+        if (orientationCheckIntervalRef.current) { window.clearInterval(orientationCheckIntervalRef.current); orientationCheckIntervalRef.current = null; }
         cameraStreamRef.current?.getTracks().forEach(track => track.stop());
         cameraStreamRef.current = null;
+
+        // Stop orientation tracking and audio feedback
+        orientationTracker.stop();
+        await audioFeedback.dispose();
     }, []);
     
     const cleanupAudioInput = useCallback(() => {
@@ -182,15 +471,16 @@ export function useLiveCommentary() {
 
     const stopLiveSession = useCallback(async () => {
         setIsSessionReady(false); // Immediately prevent new data from being sent
+        setChatMessages([]); // Clear chat history
         if (liveSessionRef.current) {
             try {
                 liveSessionRef.current.close();
             } catch (e) {
                 console.warn("Error initiating live session close:", e);
                  // Force cleanup if close() fails
-                 stopAndClearAudio(); 
-                 liveSessionRef.current = null; 
-                 setCommentaryStatus("Idle"); 
+                 stopAndClearAudio();
+                 liveSessionRef.current = null;
+                 setCommentaryStatus("Idle");
                  cleanupAudioInput();
             }
         }
@@ -219,13 +509,14 @@ export function useLiveCommentary() {
                     onopen: async () => {
                         console.log("WebSocket onopen called!");
                         setIsSessionReady(true);
+                        setIsNavigationMode(false);
                         setCommentaryStatus("🎙️ Ready");
 
                         // Set up microphone with mute control
                         (async () => {
                             try {
                                 console.log("Setting up microphone...");
-                                await inputAudioCtxRef.current!.audioWorklet.addModule('/audioProcessor.js');
+                                await inputAudioCtxRef.current!.audioWorklet.addModule('/ai-vision-guide/audioProcessor.js');
 
                                 microphoneStreamRef.current = await navigator.mediaDevices.getUserMedia({ audio: true });
                                 console.log("Microphone access granted");
@@ -235,10 +526,22 @@ export function useLiveCommentary() {
                                 audioWorkletNodeRef.current = audioWorkletNode;
 
                                 audioWorkletNode.port.onmessage = (event) => {
-                                    if (!liveSessionRef.current || isMicMutedRef.current) return;
                                     const pcmData = event.data as Int16Array;
-                                    const pcmBlob = createPCMBlob(pcmData);
-                                    liveSessionRef.current.sendRealtimeInput({ audio: pcmBlob });
+
+                                    // Always detect user speech for barge-in (even if muted for sending)
+                                    detectUserSpeech(pcmData);
+
+                                    // Only send audio to AI if not muted and session is active
+                                    if (liveSessionRef.current && !isMicMutedRef.current) {
+                                        micChunkCounterRef.current++;
+                                        const pcmBlob = createPCMBlob(pcmData);
+                                        liveSessionRef.current.sendRealtimeInput({ audio: pcmBlob });
+
+                                        // Log every 50th chunk to avoid spam
+                                        if (micChunkCounterRef.current % 50 === 0) {
+                                            console.log(`📤 Sent microphone chunk #${micChunkCounterRef.current}, size: ${pcmData.length * 2} bytes (16kHz PCM)`);
+                                        }
+                                    }
                                 };
                                 source.connect(audioWorkletNode);
                                 audioWorkletNode.connect(inputAudioCtxRef.current!.destination);
@@ -269,7 +572,13 @@ export function useLiveCommentary() {
                         cleanupAudioInput();
                     },
                 },
-                config: { systemInstruction: initialSystemPrompt, responseModalities: [Modality.AUDIO], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName } } } },
+                config: {
+                    systemInstruction: normalSystemPrompt,
+                    responseModalities: [Modality.AUDIO, Modality.TEXT], // Enable TEXT for speech transcription
+                    speechConfig: {
+                        voiceConfig: { prebuiltVoiceConfig: { voiceName } }
+                    }
+                },
             });
             liveSessionRef.current = await sessionPromise;
             console.log("Session object assigned to ref");
@@ -277,12 +586,12 @@ export function useLiveCommentary() {
             // Send welcome message
             try {
                 console.log("Sending welcome message");
-                liveSessionRef.current.sendRealtimeInput({ text: "Say: Welcome! Please start sharing your screen or camera so I can describe what I see." });
+                liveSessionRef.current.sendRealtimeInput({ text: "Say: Hello! I'm Aura, your AI vision assistant. Start your camera or share your screen, and I'll describe what I see. Feel free to interrupt me anytime with questions." });
             } catch (err) {
                 console.error("Error sending welcome message:", err);
             }
         } catch (e: any) { console.error("Live connect error:", e); setCommentaryStatus(`⚠️ Connect Err`); throw e; }
-    }, [initAudioContexts, stopAndClearAudio, stopLiveSession, cleanupAudioInput, isSessionReady]);
+    }, [initAudioContexts, stopAndClearAudio, stopLiveSession, cleanupAudioInput, isSessionReady, detectUserSpeech]);
 
     const startFrameStreaming = useCallback((videoEl: HTMLVideoElement) => {
         if (frameIntervalRef.current) {
@@ -298,6 +607,19 @@ export function useLiveCommentary() {
 
         frameCountRef.current = 0;
 
+        // Calculate frame rate based on urgency level
+        const getFrameInterval = () => {
+            if (!isNavigationMode) return 1000 / FRAME_RATE; // 2 seconds default
+
+            switch (urgencyLevel) {
+                case 'critical': return 500;   // 0.5 seconds - FASTEST
+                case 'high':     return 1000;  // 1 second
+                case 'medium':   return 1500;  // 1.5 seconds
+                case 'low':      return 2000;  // 2 seconds
+                default:         return 1000 / FRAME_RATE;
+            }
+        };
+
         // Wait for frames to be sent before prompting
         // First prompt after 5 seconds (enough time for several frames to arrive)
         setTimeout(() => {
@@ -310,13 +632,33 @@ export function useLiveCommentary() {
         // Note: Subsequent prompts are now handled in the audio onended callback
         // to ensure they don't interrupt the AI while speaking
 
-        frameIntervalRef.current = window.setInterval(() => {
+        // Dynamic frame rate - adjusts based on urgency
+        const sendFrame = () => {
             if (videoEl.videoWidth === 0 || videoEl.videoHeight === 0 || !isSessionReady) {
                 return;
             }
             canvas.width = videoEl.videoWidth;
             canvas.height = videoEl.videoHeight;
             ctx!.drawImage(videoEl, 0, 0, videoEl.videoWidth, videoEl.videoHeight);
+
+            // Check image quality before sending
+            const imageData = extractImageDataFromVideo(videoEl, canvas);
+            if (imageData) {
+                const quality = analyzeImageQuality(imageData);
+                setImageQuality(quality);
+
+                // If critical image quality issue, play audio cue and log warning
+                if (quality.qualityIssue) {
+                    console.log(`📸 Image quality issue: ${quality.qualityIssue}`);
+                    const orientation = orientationTracker.analyzeOrientation();
+
+                    // Combine image quality and orientation guidance
+                    if (orientation.needsAdjustment && orientation.severity === 'critical') {
+                        console.log(`📱 Orientation issue: ${orientation.message}`);
+                    }
+                }
+            }
+
             canvas.toBlob(async (blob) => {
                 if (blob && liveSessionRef.current && isSessionReady) {
                     const base64Data = (await new Promise<string>(resolve => {
@@ -335,8 +677,15 @@ export function useLiveCommentary() {
                     }
                 }
             }, 'image/jpeg', JPEG_QUALITY);
-        }, 1000 / FRAME_RATE);
-    }, [isSessionReady]);
+
+            // Schedule next frame with dynamic interval
+            const nextInterval = getFrameInterval();
+            frameIntervalRef.current = window.setTimeout(sendFrame, nextInterval);
+        };
+
+        // Start first frame
+        sendFrame();
+    }, [isSessionReady, isNavigationMode, urgencyLevel]);
 
     const startScreenShare = useCallback(async (videoEl: HTMLVideoElement) => {
         if (!liveSessionRef.current || !isSessionReady) throw new Error("Live session not ready.");
@@ -361,6 +710,21 @@ export function useLiveCommentary() {
         videoEl.srcObject = cameraStreamRef.current;
         await videoEl.play();
         startFrameStreaming(videoEl);
+
+        // Initialize orientation tracking and audio feedback
+        await orientationTracker.start((orientation) => {
+            setDeviceOrientation(orientation);
+        });
+        await audioFeedback.init();
+
+        // Check orientation every 2 seconds and provide guidance if needed
+        orientationCheckIntervalRef.current = window.setInterval(() => {
+            const guidance = orientationTracker.analyzeOrientation();
+            if (guidance.needsAdjustment && guidance.severity === 'critical') {
+                audioFeedback.playError();
+                console.log(`⚠️ Orientation issue: ${guidance.message}`);
+            }
+        }, 2000);
     }, [startFrameStreaming, isSessionReady]);
 
     const toggleMicMute = useCallback(() => {
@@ -369,6 +733,25 @@ export function useLiveCommentary() {
             isMicMutedRef.current = newState; // Update ref immediately
             console.log("Microphone muted:", newState);
             return newState;
+        });
+    }, []);
+
+    const toggleNavigationMode = useCallback(() => {
+        setIsNavigationMode(prev => {
+            const newMode = !prev;
+            console.log("Navigation mode:", newMode ? "ON" : "OFF");
+
+            // Send prompt update to AI
+            if (liveSessionRef.current) {
+                const instruction = newMode ?
+                    `You are now in NAVIGATION MODE. Switch to giving SHORT, CLEAR walking directions (3-5 words max). Examples: "Clear ahead", "Stop. Stairs down", "Turn left. Door ahead". Call hazards immediately. Be brief and direct.` :
+                    `You are now in NORMAL MODE. Return to detailed descriptions and conversational responses. Describe what you see fully.`;
+
+                liveSessionRef.current.sendRealtimeInput({ text: instruction });
+            }
+
+            setCommentaryStatus(newMode ? "🧭 Navigation Mode" : "🎙️ Normal Mode");
+            return newMode;
         });
     }, []);
 
@@ -381,12 +764,19 @@ export function useLiveCommentary() {
         commentaryStatus,
         isSessionReady,
         isMicMuted,
+        chatMessages,
+        isNavigationMode,
+        detectedDistance,
+        urgencyLevel,
+        deviceOrientation,
+        imageQuality,
         initLiveSession,
         startScreenShare,
         stopScreenShare,
         startCameraStream,
         stopCameraStream,
         stopLiveSession,
-        toggleMicMute
+        toggleMicMute,
+        toggleNavigationMode
     };
 }

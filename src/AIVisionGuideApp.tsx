@@ -8,6 +8,7 @@ import { useLiveCommentary } from './hooks/useLiveCommentary';
 import { AVAILABLE_VOICES } from './constants';
 import ControlBar from './components/ControlBar';
 import ParticleBackground from './components/ParticleBackground';
+import ChatInterface from './components/ChatInterface';
 
 export type APIKeyStatus = 'checking' | 'ready' | 'missing';
 export type CameraPermissionStatus = 'prompt' | 'granted' | 'denied';
@@ -31,13 +32,18 @@ function AIVisionGuideApp() {
         commentaryStatus,
         isSessionReady,
         isMicMuted,
+        chatMessages,
+        isNavigationMode,
+        deviceOrientation,
+        imageQuality,
         initLiveSession,
         stopLiveSession,
         startScreenShare,
         stopScreenShare,
         startCameraStream,
         stopCameraStream,
-        toggleMicMute
+        toggleMicMute,
+        toggleNavigationMode
     } = useLiveCommentary();
 
     useEffect(() => {
@@ -135,23 +141,24 @@ function AIVisionGuideApp() {
 
     return (
         <>
+            <a href="#main-content" className="skip-link">Skip to main content</a>
             <ParticleBackground />
-            <div className="app-container">
-                <header className="app-header">
+            <div className="app-container" role="application" aria-label="VCB Vision - AI Vision Assistant">
+                <header className="app-header" role="banner">
                     <div className="header-content">
-                        <img 
-                            src="https://i.postimg.cc/gJRb8pvP/logo-transparent-Black-Back.png" 
-                            alt="AI Vision Guide Logo" 
+                        <img
+                            src="https://i.postimg.cc/gJRb8pvP/logo-transparent-Black-Back.png"
+                            alt="VCB Vision - AI powered vision assistance for the blind and visually impaired"
                             className="app-logo"
                         />
                         <div className="header-text">
-                            <h1>AI Vision Guide</h1>
+                            <h1>VCB Vision</h1>
                             <p className="motto">Where vision becomes viable</p>
                         </div>
                     </div>
                 </header>
 
-                <main className="main-content">
+                <main id="main-content" className="main-content" role="main">
                     <div className="screen-share-container">
                         <video
                             ref={videoRef}
@@ -163,16 +170,20 @@ function AIVisionGuideApp() {
                             aria-label="Live video feed from screen or camera"
                         ></video>
                         {!isVideoVisible && (
-                            <div className="instructions">
-                                <h2>Welcome to AI Vision Guide</h2>
+                            <div className="instructions" role="region" aria-label="Getting started instructions">
+                                <h2>Welcome to VCB Vision</h2>
                                 <p>
-                                    <strong>1.</strong> Ensure your API Key is ready
+                                    <strong>1.</strong> Ensure your API Key is ready in the status bar below
                                     <br/>
-                                    <strong>2.</strong> Click 'Start Session' to connect to your AI guide
+                                    <strong>2.</strong> Click 'Start Session' to connect to Aura, your AI vision assistant
                                     <br />
-                                    <strong>3.</strong> Choose 'Share Screen' or 'Start Camera' to provide visual feed
+                                    <strong>3.</strong> Choose 'Start Camera' for walking guidance or 'Share Screen' to read content
                                     <br />
-                                    <strong>4.</strong> Your AI guide will describe what it sees and answer questions
+                                    <strong>4.</strong> Aura will describe what she sees with focus on safety and navigation
+                                    <br />
+                                    <strong>5.</strong> Speak anytime to ask questions or get more details - you can interrupt Aura at any time
+                                    <br />
+                                    <strong>6.</strong> Use the microphone button to mute/unmute your voice input
                                 </p>
                             </div>
                         )}
@@ -194,7 +205,16 @@ function AIVisionGuideApp() {
                     cameraPermissionStatus={cameraPermissionStatus}
                     isMicMuted={isMicMuted}
                     onToggleMicMute={toggleMicMute}
+                    isNavigationMode={isNavigationMode}
+                    onToggleNavigationMode={toggleNavigationMode}
                 />
+
+                {isSessionActive && chatMessages.length > 0 && (
+                    <ChatInterface
+                        messages={chatMessages}
+                        isListening={!isMicMuted && isSessionReady}
+                    />
+                )}
             </div>
         </>
     );
