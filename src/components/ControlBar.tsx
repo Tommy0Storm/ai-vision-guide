@@ -89,6 +89,7 @@ const ControlBar: React.FC<ControlBarProps> = ({
                     className={`control-button ${isMicMuted ? 'inactive' : 'active'}`}
                     disabled={!isSessionActive}
                     aria-label={isMicMuted ? 'Unmute Microphone' : 'Mute Microphone'}
+                    title={isMicMuted ? 'Click to unmute - you can talk to the AI' : 'Click to mute - AI cannot hear you'}
                 >
                     {isMicMuted ? 'Mic Off' : 'Mic On'}
                 </button>

@@ -40,13 +40,14 @@ const JPEG_QUALITY = 0.7;
 export function useLiveCommentary() {
     const [commentaryStatus, setCommentaryStatus] = useState('');
     const [isSessionReady, setIsSessionReady] = useState(false);
-    const [isMicMuted, setIsMicMuted] = useState(true);
+    const [isMicMuted, setIsMicMuted] = useState(false); // Changed to false - mic active by default
     const outputAudioCtxRef = useRef<AudioContext | null>(null);
     const inputAudioCtxRef = useRef<AudioContext | null>(null);
     const liveSessionRef = useRef<any | null>(null);
     const nextStartTimeRef = useRef(0);
     const isAudioPlayingRef = useRef(false);
     const activeSourcesRef = useRef(new Set<AudioBufferSourceNode>());
+    const isMicMutedRef = useRef(false); // Add ref to track mute state without stale closures
     
     // Refs for screen and audio input streaming
     const screenStreamRef = useRef<MediaStream | null>(null);
@@ -234,14 +235,14 @@ export function useLiveCommentary() {
                                 audioWorkletNodeRef.current = audioWorkletNode;
 
                                 audioWorkletNode.port.onmessage = (event) => {
-                                    if (!liveSessionRef.current || isMicMuted) return;
+                                    if (!liveSessionRef.current || isMicMutedRef.current) return;
                                     const pcmData = event.data as Int16Array;
                                     const pcmBlob = createPCMBlob(pcmData);
                                     liveSessionRef.current.sendRealtimeInput({ audio: pcmBlob });
                                 };
                                 source.connect(audioWorkletNode);
                                 audioWorkletNode.connect(inputAudioCtxRef.current!.destination);
-                                console.log("Microphone setup complete (muted by default)");
+                                console.log("Microphone setup complete (active by default)");
                             } catch (err) {
                                 console.error("Error setting up microphone:", err);
                                 console.warn("Continuing without microphone");
@@ -363,8 +364,17 @@ export function useLiveCommentary() {
     }, [startFrameStreaming, isSessionReady]);
 
     const toggleMicMute = useCallback(() => {
-        setIsMicMuted(prev => !prev);
-        console.log("Microphone muted:", !isMicMuted);
+        setIsMicMuted(prev => {
+            const newState = !prev;
+            isMicMutedRef.current = newState; // Update ref immediately
+            console.log("Microphone muted:", newState);
+            return newState;
+        });
+    }, []);
+
+    // Sync ref with state on mount
+    useEffect(() => {
+        isMicMutedRef.current = isMicMuted;
     }, [isMicMuted]);
 
     return {
