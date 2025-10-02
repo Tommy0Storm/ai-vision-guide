@@ -8,7 +8,10 @@
 body {
     font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 300;
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%);
+    background: 
+        radial-gradient(ellipse at top left, rgba(40, 40, 40, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(30, 30, 30, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%);
     color: #E8EDF4;
     margin: 0;
     overflow: hidden;
@@ -29,18 +32,20 @@ body::before {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(200, 200, 200, 0.06) 0%, transparent 55%),
-        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 60% 20%, rgba(180, 180, 180, 0.04) 0%, transparent 65%);
-    animation: gradientShift 20s ease-in-out infinite alternate;
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(200, 200, 200, 0.10) 0%, transparent 55%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 60% 20%, rgba(180, 180, 180, 0.07) 0%, transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    animation: gradientShift 25s ease-in-out infinite alternate;
     pointer-events: none;
     z-index: 0;
 }
 
 @keyframes gradientShift {
     0% { opacity: 1; transform: scale(1) rotate(0deg); }
-    50% { opacity: 0.7; transform: scale(1.15) rotate(2deg); }
+    33% { opacity: 0.85; transform: scale(1.1) rotate(1deg); }
+    66% { opacity: 0.75; transform: scale(1.2) rotate(-1deg); }
     100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
@@ -62,13 +67,18 @@ body::before {
 }
 
 .app-header {
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.8) 100%);
-    backdrop-filter: blur(20px) saturate(180%);
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: 
+        linear-gradient(180deg, rgba(30, 30, 30, 0.95) 0%, rgba(15, 15, 15, 0.9) 100%);
+    backdrop-filter: blur(30px) saturate(200%);
     text-align: center;
     position: relative;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 40px rgba(0, 0, 0, 0.6),
+        0 2px 10px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .app-header::before {
@@ -77,16 +87,19 @@ body::before {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 4px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 255, 255, 0.1) 10%,
-        rgba(255, 255, 255, 0.3) 25%, 
-        rgba(255, 255, 255, 0.6) 50%,
-        rgba(255, 255, 255, 0.3) 75%,
-        rgba(255, 255, 255, 0.1) 90%, 
+        rgba(255, 255, 255, 0.15) 10%,
+        rgba(255, 255, 255, 0.4) 20%,
+        rgba(255, 255, 255, 0.7) 40%, 
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 255, 255, 0.7) 60%,
+        rgba(255, 255, 255, 0.4) 80%,
+        rgba(255, 255, 255, 0.15) 90%, 
         transparent 100%);
-    animation: shimmer 4s ease-in-out infinite;
+    animation: shimmer 5s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 @keyframes shimmer {
@@ -124,58 +137,81 @@ body::before {
     height: 120px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.15));
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: logoGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 8px 30px rgba(255, 255, 255, 0.25));
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: logoGlow 4s ease-in-out infinite;
 }
 
 @keyframes logoGlow {
     0%, 100% {
-        filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.15));
+        filter: drop-shadow(0 8px 30px rgba(255, 255, 255, 0.25))
+                drop-shadow(0 0 40px rgba(255, 255, 255, 0.1));
     }
     50% {
-        filter: drop-shadow(0 4px 30px rgba(255, 255, 255, 0.25)) 
-                drop-shadow(0 0 40px rgba(200, 200, 200, 0.2));
+        filter: drop-shadow(0 12px 50px rgba(255, 255, 255, 0.4)) 
+                drop-shadow(0 0 80px rgba(200, 200, 200, 0.3))
+                drop-shadow(0 0 120px rgba(255, 255, 255, 0.15));
     }
 }
 
 .app-logo:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 6px 30px rgba(255, 255, 255, 0.3)) 
-            drop-shadow(0 0 50px rgba(200, 200, 200, 0.25));
+    transform: scale(1.08) rotate(2deg) translateY(-5px);
+    filter: drop-shadow(0 12px 50px rgba(255, 255, 255, 0.5)) 
+            drop-shadow(0 0 80px rgba(200, 200, 200, 0.4))
+            drop-shadow(0 0 120px rgba(255, 255, 255, 0.2));
 }
 
 .app-header h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     font-weight: 500;
     font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 25%, #c0c0c0 50%, #a0a0a0 75%, #808080 100%);
+    background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        #f0f0f0 15%,
+        #e0e0e0 30%, 
+        #d0d0d0 45%,
+        #c0c0c0 60%, 
+        #b0b0b0 75%,
+        #a0a0a0 90%,
+        #808080 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
     text-transform: none;
+    position: relative;
 }
 
 .motto {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 500;
     font-family: 'Quicksand', sans-serif;
     color: #94a3b8;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     font-style: normal;
     opacity: 1;
-    background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 25%, #909090 50%, #707070 100%);
+    background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        #d0d0d0 20%,
+        #b0b0b0 40%, 
+        #a0a0a0 60%,
+        #909090 80%,
+        #707070 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeIn 1s ease-out 0.3s backwards;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    animation: fadeIn 1.2s ease-out 0.4s backwards, mottoGlow 3s ease-in-out 1s infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
     padding: 0.5rem 0;
+}
+
+@keyframes mottoGlow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)); }
+    50% { filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)); }
 }
 
 @keyframes fadeIn {
@@ -206,10 +242,11 @@ body::before {
     height: 100%;
     max-width: 1400px;
     position: relative;
-    background: linear-gradient(135deg, rgba(20, 20, 20, 0.6) 0%, rgba(10, 10, 10, 0.7) 50%, rgba(25, 25, 25, 0.6) 100%);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: 
+        linear-gradient(135deg, rgba(30, 30, 30, 0.7) 0%, rgba(15, 15, 15, 0.8) 50%, rgba(25, 25, 25, 0.7) 100%);
+    backdrop-filter: blur(30px) saturate(200%);
+    border-radius: 28px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,18 +296,20 @@ body::before {
 }
 
 .instructions {
-    max-width: 750px;
+    max-width: 800px;
     color: #cbd5e1;
-    padding: 3.5rem;
-    background: linear-gradient(135deg, rgba(25, 25, 25, 0.5) 0%, rgba(15, 15, 15, 0.6) 50%, rgba(20, 20, 20, 0.5) 100%);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(15px);
-    animation: fadeInUp 0.6s ease-out;
+    padding: 4rem;
+    background: 
+        linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.7) 50%, rgba(25, 25, 25, 0.6) 100%);
+    border-radius: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(25px) saturate(180%);
+    animation: fadeInUp 0.8s ease-out;
     box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 0 80px rgba(255, 255, 255, 0.03);
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 100px rgba(255, 255, 255, 0.05),
+        inset 0 2px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
@@ -280,9 +319,10 @@ body::before {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .instructions::after {
@@ -291,9 +331,10 @@ body::before {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 @keyframes fadeInUp {
@@ -367,14 +408,16 @@ video.screen-preview {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(15, 15, 15, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
-    backdrop-filter: blur(30px) saturate(180%);
+    padding: 2rem 2.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+    backdrop-filter: blur(40px) saturate(200%);
     gap: 2rem;
     box-shadow: 
-        0 -4px 30px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        0 -8px 40px rgba(0, 0, 0, 0.6),
+        0 -2px 10px rgba(255, 255, 255, 0.05),
+        inset 0 2px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .controls-left {
@@ -484,26 +527,29 @@ video.screen-preview {
 /* Premium Button Styles - Monochrome */
 button.control-button {
     font-family: 'Quicksand', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
-    padding: 0.875rem 1.75rem;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: #FFFFFF;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    letter-spacing: 0.3px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        0 2px 5px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    letter-spacing: 0.5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    min-width: 130px;
-    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    min-width: 150px;
+    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 30%, #2a2a2a 70%, #1a1a1a 100%);
 }
 
 button.control-button::before {
@@ -522,12 +568,14 @@ button.control-button:hover::before {
 }
 
 button.control-button.active {
-    background: linear-gradient(135deg, #5a5a5a 0%, #4a4a4a 30%, #3a3a3a 70%, #2a2a2a 100%);
-    border-color: rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, #6a6a6a 0%, #5a5a5a 25%, #4a4a4a 50%, #3a3a3a 75%, #2a2a2a 100%);
+    border-color: rgba(255, 255, 255, 0.5);
     box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(255, 255, 255, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        0 6px 20px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.2),
+        0 2px 8px rgba(255, 255, 255, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.5);
 }
 
 button.control-button.inactive {
@@ -555,13 +603,14 @@ button.control-button.share-screen.inactive {
 }
 
 button.control-button:hover:not(:disabled) {
-    transform: translateY(-1px);
-    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 50%, #2a2a2a 100%);
-    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #5a5a5a 0%, #4a4a4a 30%, #3a3a3a 70%, #2a2a2a 100%);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.4),
-        0 0 15px rgba(255, 255, 255, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 255, 255, 0.15),
+        0 4px 10px rgba(255, 255, 255, 0.1),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
 }
 
 button.control-button:active:not(:disabled) {
