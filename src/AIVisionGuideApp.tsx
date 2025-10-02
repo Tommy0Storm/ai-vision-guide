@@ -144,7 +144,10 @@ function AIVisionGuideApp() {
                             alt="AI Vision Guide Logo" 
                             className="app-logo"
                         />
-                        <h1>AI Vision Guide</h1>
+                        <div className="header-text">
+                            <h1>AI Vision Guide</h1>
+                            <p className="motto">Where vision becomes viable</p>
+                        </div>
                     </div>
                 </header>
 

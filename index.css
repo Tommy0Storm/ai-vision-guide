@@ -108,6 +108,13 @@ body::before {
     }
 }
 
+.header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
 .app-logo {
     height: 60px;
     width: auto;
@@ -143,6 +150,33 @@ body::before {
     background-clip: text;
     letter-spacing: -0.5px;
     text-shadow: 0 0 40px rgba(79, 70, 229, 0.3);
+}
+
+.motto {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-style: italic;
+    opacity: 0.9;
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateX(0);
+    }
 }
 
 .main-content {
@@ -480,6 +514,11 @@ button.control-button.permission-denied:disabled {
     .app-header h1 {
         font-size: 1.75rem;
     }
+    
+    .motto {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
 
     .control-bar {
         flex-direction: column;
@@ -531,8 +570,18 @@ button.control-button.permission-denied:disabled {
         gap: 0.75rem;
     }
     
+    .header-text {
+        align-items: center;
+        text-align: center;
+    }
+    
     .app-logo {
         height: 40px;
+    }
+    
+    .motto {
+        font-size: 0.7rem;
+        letter-spacing: 0.8px;
     }
     
     .status-indicators {
