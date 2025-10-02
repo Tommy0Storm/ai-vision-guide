@@ -116,7 +116,7 @@ body::before {
 }
 
 .app-logo {
-    height: 60px;
+    height: 120px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 20px rgba(79, 70, 229, 0.4));
@@ -409,20 +409,25 @@ video.screen-preview {
 /* Premium Button Styles */
 button.control-button {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 0.875rem 1.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 14px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: #FFFFFF;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
-    letter-spacing: 0.3px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+    border: 2px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 140px;
 }
 
 button.control-button::before {
@@ -441,42 +446,47 @@ button.control-button:hover::before {
 }
 
 button.control-button.active {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    border-color: rgba(220, 38, 38, 0.5);
     box-shadow: 
-        0 6px 30px rgba(239, 68, 68, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 4px 20px rgba(220, 38, 38, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 button.control-button.inactive {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    border-color: rgba(5, 150, 105, 0.5);
     box-shadow: 
-        0 6px 30px rgba(16, 185, 129, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 4px 20px rgba(5, 150, 105, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 button.control-button.share-screen.active {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    border-color: rgba(234, 88, 12, 0.5);
     box-shadow: 
-        0 6px 30px rgba(249, 115, 22, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 4px 20px rgba(234, 88, 12, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 button.control-button.share-screen.inactive {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    border-color: rgba(37, 99, 235, 0.5);
     box-shadow: 
-        0 6px 30px rgba(59, 130, 246, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 4px 20px rgba(37, 99, 235, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 button.control-button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 
-        0 8px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 6px 30px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    filter: brightness(1.1);
 }
 
 button.control-button:active:not(:disabled) {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
 }
 
 button.control-button:disabled {
@@ -508,7 +518,7 @@ button.control-button.permission-denied:disabled {
     }
     
     .app-logo {
-        height: 45px;
+        height: 90px;
     }
     
     .app-header h1 {
@@ -576,7 +586,7 @@ button.control-button.permission-denied:disabled {
     }
     
     .app-logo {
-        height: 40px;
+        height: 80px;
     }
     
     .motto {
