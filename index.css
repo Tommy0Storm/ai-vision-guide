@@ -1,0 +1,231 @@
+/* --- Global Styles & Dark Theme --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212; /* Very dark grey */
+    color: #E0E0E0; /* Light grey text */
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+/* --- App Layout --- */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.app-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #333;
+    background-color: #1E1E1E;
+    text-align: center;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #FFFFFF;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Screen Share Styles */
+.screen-share-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+    border-radius: 8px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 1.2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+}
+
+.instructions {
+    max-width: 600px;
+    color: #AAAAAA;
+}
+
+.instructions h2 {
+    color: #E0E0E0;
+    margin-bottom: 0.5rem;
+}
+
+.instructions p {
+    margin-top: 0;
+}
+
+
+video.screen-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* --- Control Bar --- */
+.control-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #333;
+    background-color: #1E1E1E;
+    gap: 1rem;
+}
+
+.controls-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.controls-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.status-indicators {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.api-key-status {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.api-key-status.ready {
+    color: #4CAF50; /* Green */
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.api-key-status.missing {
+    color: #F44336; /* Red */
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.api-key-status.checking {
+    color: #AAAAAA;
+}
+
+
+.commentary-status {
+    font-size: 0.9rem;
+    color: #AAAAAA;
+}
+
+.voice-selector {
+    background-color: #333;
+    color: #E0E0E0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.voice-selector:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+button.control-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #FFFFFF;
+}
+
+button.control-button.active {
+    background-color: #F44336; /* Red for 'Stop' */
+}
+
+button.control-button.inactive {
+    background-color: #4CAF50; /* Green for 'Start' */
+}
+
+button.control-button.share-screen.active {
+    background-color: #e67e22; /* Orange for 'Stop Sharing' */
+}
+
+button.control-button.share-screen.inactive {
+    background-color: #3498db; /* Blue for 'Share Screen' */
+}
+
+
+button.control-button:hover {
+    opacity: 0.9;
+}
+
+button.control-button:disabled {
+    background-color: #555;
+    color: #999;
+    cursor: not-allowed;
+}
+
+button.control-button.permission-denied:disabled {
+    background-color: #7c2a23; /* Darker, muted red */
+    color: #c9abab;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .control-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .controls-left, .controls-right {
+        justify-content: space-between;
+    }
+}

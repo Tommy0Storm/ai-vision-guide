@@ -1,0 +1,773 @@
+client:789 [vite] connecting...
+AIVisionGuideApp.tsx:42 Checking API Key: Found
+AIVisionGuideApp.tsx:42 Checking API Key: Found
+client:912 [vite] connected.
+AIVisionGuideApp.tsx:64 handleToggleSession called, isSessionActive: false
+AIVisionGuideApp.tsx:77 Starting session with voice: Zephyr
+useLiveCommentary.ts:195 WebSocket onopen called!
+useLiveCommentary.ts:202 Setting up audio worklet...
+useLiveCommentary.ts:252 Session object assigned to ref
+useLiveCommentary.ts:256 Sending setup message
+AIVisionGuideApp.tsx:80 Session initialized successfully
+useLiveCommentary.ts:204 Audio worklet loaded, requesting microphone...
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {setupComplete: {…}}
+useLiveCommentary.ts:207 Microphone access granted
+useLiveCommentary.ts:221 Audio input setup complete
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:280 Sending initial trigger to AI
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:84 AI speech interrupted. Clearing audio buffer.
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}, usageMetadata: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}serverContent: {modelTurn: {…}}data: (...)text: (...)[[Prototype]]: Object
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:309 Sending frame to AI, count: 1
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}, usageMetadata: {…}}
+ Sending periodic prompt to AI
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ Sending periodic prompt to AI
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ AI speech interrupted. Clearing audio buffer.
+ WebSocket message received: LiveServerMessage {serverContent: {…}, usageMetadata: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ Sending periodic prompt to AI
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ AI speech interrupted. Clearing audio buffer.
+ WebSocket message received: LiveServerMessage {serverContent: {…}, usageMetadata: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+ WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+useLiveCommentary.ts:230 WebSocket message received: LiveServerMessage {serverContent: {…}}
+AIVisionGuideApp.tsx:64 handleToggleSession called, isSessionActive: true
+AIVisionGuideApp.tsx:66 Stopping session...
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:217  WebSocket is already in CLOSING or CLOSED state.
+send @ _browser_websocket.ts:46
+sendRealtimeInput @ live.ts:476
+audioWorkletNode.port.onmessage @ useLiveCommentary.ts:217
+useLiveCommentary.ts:241  WebSocket closed. Code: 1000 Reason: 
+overrideMethod @ hook.js:608
+onclose @ useLiveCommentary.ts:241

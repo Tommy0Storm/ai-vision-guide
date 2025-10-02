@@ -1,0 +1,9 @@
+{
+  "name": "AI Vision Guide",
+  "description": "An AI assistant that describes on-screen content to provide visual guidance for users.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "prompt": ""
+}
