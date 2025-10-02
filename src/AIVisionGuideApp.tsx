@@ -7,6 +7,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLiveCommentary } from './hooks/useLiveCommentary';
 import { AVAILABLE_VOICES } from './constants';
 import ControlBar from './components/ControlBar';
+import ParticleBackground from './components/ParticleBackground';
 
 export type APIKeyStatus = 'checking' | 'ready' | 'missing';
 export type CameraPermissionStatus = 'prompt' | 'granted' | 'denied';
@@ -133,56 +134,66 @@ function AIVisionGuideApp() {
     const isVideoVisible = isSharingScreen || isCameraActive;
 
     return (
-        <div className="app-container">
-            <header className="app-header">
-                <h1>AI Vision Guide</h1>
-            </header>
+        <>
+            <ParticleBackground />
+            <div className="app-container">
+                <header className="app-header">
+                    <div className="header-content">
+                        <img 
+                            src="https://i.postimg.cc/gJRb8pvP/logo-transparent-Black-Back.png" 
+                            alt="AI Vision Guide Logo" 
+                            className="app-logo"
+                        />
+                        <h1>AI Vision Guide</h1>
+                    </div>
+                </header>
 
-            <main className="main-content">
-                <div className="screen-share-container">
-                    <video
-                        ref={videoRef}
-                        className="screen-preview"
-                        muted
-                        autoPlay
-                        playsInline
-                        style={{ display: isVideoVisible ? 'block' : 'none' }}
-                        aria-label="Live video feed from screen or camera"
-                    ></video>
-                    {!isVideoVisible && (
-                        <div className="instructions">
-                            <h2>Welcome to the AI Vision Guide</h2>
-                            <p>
-                                1. Ensure your API Key is ready.
-                                <br/>
-                                2. Click 'Start Session' to connect to your AI guide.
-                                <br />
-                                3. Click 'Share Screen' or 'Start Camera' to provide a visual feed.
-                                <br />
-                                4. Your AI guide will begin describing what it sees and can answer your questions.
-                            </p>
-                        </div>
-                    )}
-                </div>
-            </main>
+                <main className="main-content">
+                    <div className="screen-share-container">
+                        <video
+                            ref={videoRef}
+                            className="screen-preview"
+                            muted
+                            autoPlay
+                            playsInline
+                            style={{ display: isVideoVisible ? 'block' : 'none' }}
+                            aria-label="Live video feed from screen or camera"
+                        ></video>
+                        {!isVideoVisible && (
+                            <div className="instructions">
+                                <h2>✨ Welcome to AI Vision Guide</h2>
+                                <p>
+                                    <strong>1.</strong> Ensure your API Key is ready ✓
+                                    <br/>
+                                    <strong>2.</strong> Click 'Start Session' to connect to your AI guide 🚀
+                                    <br />
+                                    <strong>3.</strong> Choose 'Share Screen' or 'Start Camera' to provide visual feed 📹
+                                    <br />
+                                    <strong>4.</strong> Your AI guide will describe what it sees and answer questions 💬
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </main>
 
-            <ControlBar
-                isSessionActive={isSessionActive}
-                isSessionReady={isSessionReady}
-                onToggleSession={handleToggleSession}
-                commentaryStatus={commentaryStatus}
-                selectedVoice={selectedVoice}
-                onVoiceChange={setSelectedVoice}
-                isSharingScreen={isSharingScreen}
-                onToggleScreenShare={handleToggleScreenShare}
-                isCameraActive={isCameraActive}
-                onToggleCamera={handleToggleCamera}
-                apiKeyStatus={apiKeyStatus}
-                cameraPermissionStatus={cameraPermissionStatus}
-                isMicMuted={isMicMuted}
-                onToggleMicMute={toggleMicMute}
-            />
-        </div>
+                <ControlBar
+                    isSessionActive={isSessionActive}
+                    isSessionReady={isSessionReady}
+                    onToggleSession={handleToggleSession}
+                    commentaryStatus={commentaryStatus}
+                    selectedVoice={selectedVoice}
+                    onVoiceChange={setSelectedVoice}
+                    isSharingScreen={isSharingScreen}
+                    onToggleScreenShare={handleToggleScreenShare}
+                    isCameraActive={isCameraActive}
+                    onToggleCamera={handleToggleCamera}
+                    apiKeyStatus={apiKeyStatus}
+                    cameraPermissionStatus={cameraPermissionStatus}
+                    isMicMuted={isMicMuted}
+                    onToggleMicMute={toggleMicMute}
+                />
+            </div>
+        </>
     );
 }
 

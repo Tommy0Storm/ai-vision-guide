@@ -41,20 +41,20 @@ const ControlBar: React.FC<ControlBarProps> = ({
     onToggleMicMute
 }) => {
     const isLoading = commentaryStatus.startsWith("🔌");
-    const sessionButtonText = isSessionActive ? 'Stop Session' : 'Start Session';
+    const sessionButtonText = isSessionActive ? '⏹️ Stop Session' : '▶️ Start Session';
     const sessionButtonClass = isSessionActive ? 'control-button active' : 'control-button inactive';
     
-    const shareButtonText = isSharingScreen ? 'Stop Sharing' : 'Share Screen';
+    const shareButtonText = isSharingScreen ? '⏹️ Stop Sharing' : '🖥️ Share Screen';
     const shareButtonClass = `control-button share-screen ${isSharingScreen ? 'active' : 'inactive'}`;
 
     const isCameraDenied = cameraPermissionStatus === 'denied';
-    const cameraButtonText = isCameraActive ? 'Stop Camera' : (isCameraDenied ? 'Camera Denied' : 'Start Camera');
+    const cameraButtonText = isCameraActive ? '⏹️ Stop Camera' : (isCameraDenied ? '🚫 Camera Denied' : '📹 Start Camera');
     const cameraButtonClass = `control-button share-screen ${isCameraActive ? 'active' : 'inactive'} ${isCameraDenied ? 'permission-denied' : ''}`;
 
     const apiKeyMessage = {
-        checking: 'Checking API Key...',
-        ready: 'API Key: Ready',
-        missing: 'API Key: Missing'
+        checking: '⏳ Checking API Key...',
+        ready: '✅ API Key: Ready',
+        missing: '❌ API Key: Missing'
     }[apiKeyStatus];
 
     const areStreamButtonsDisabled = !isSessionActive || !isSessionReady;
@@ -68,7 +68,7 @@ const ControlBar: React.FC<ControlBarProps> = ({
                         {apiKeyMessage}
                     </div>
                     <div className="commentary-status" aria-live="polite">
-                        {isLoading ? 'Connecting...' : `AI Status: ${commentaryStatus || 'Idle'}`}
+                        {isLoading ? '🔄 Connecting...' : `🤖 AI Status: ${commentaryStatus || 'Idle'}`}
                     </div>
                 </div>
                 <select
@@ -79,7 +79,7 @@ const ControlBar: React.FC<ControlBarProps> = ({
                     aria-label="Select guide's voice"
                 >
                     {AVAILABLE_VOICES.map(voice => (
-                        <option key={voice.name} value={voice.name}>{voice.label}</option>
+                        <option key={voice.name} value={voice.name}>🎙️ {voice.label}</option>
                     ))}
                 </select>
             </div>
