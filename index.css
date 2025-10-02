@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
     color: #E8EDF4;
     margin: 0;
     overflow: hidden;
@@ -28,9 +28,9 @@ body::before {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(128, 128, 128, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
     animation: gradientShift 15s ease infinite;
     pointer-events: none;
     z-index: 0;
@@ -77,9 +77,9 @@ body::before {
     height: 2px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(79, 70, 229, 0.5) 20%, 
-        rgba(236, 72, 153, 0.5) 50%,
-        rgba(79, 70, 229, 0.5) 80%, 
+        rgba(255, 255, 255, 0.2) 20%, 
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.2) 80%, 
         transparent 100%);
     animation: shimmer 3s ease-in-out infinite;
 }
@@ -119,25 +119,25 @@ body::before {
     height: 120px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 20px rgba(79, 70, 229, 0.4));
+    filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.15));
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     animation: logoGlow 3s ease-in-out infinite;
 }
 
 @keyframes logoGlow {
     0%, 100% {
-        filter: drop-shadow(0 4px 20px rgba(79, 70, 229, 0.4));
+        filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.15));
     }
     50% {
-        filter: drop-shadow(0 4px 30px rgba(79, 70, 229, 0.6)) 
-                drop-shadow(0 0 40px rgba(236, 72, 153, 0.3));
+        filter: drop-shadow(0 4px 30px rgba(255, 255, 255, 0.25)) 
+                drop-shadow(0 0 40px rgba(200, 200, 200, 0.2));
     }
 }
 
 .app-logo:hover {
     transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 6px 30px rgba(79, 70, 229, 0.6)) 
-            drop-shadow(0 0 50px rgba(236, 72, 153, 0.4));
+    filter: drop-shadow(0 6px 30px rgba(255, 255, 255, 0.3)) 
+            drop-shadow(0 0 50px rgba(200, 200, 200, 0.25));
 }
 
 .app-header h1 {
@@ -211,18 +211,18 @@ body::before {
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 0 0 1px rgba(79, 70, 229, 0.1);
+        0 0 0 1px rgba(255, 255, 255, 0.05);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .screen-share-container:hover {
-    border-color: rgba(79, 70, 229, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 
         0 12px 48px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        0 0 0 1px rgba(79, 70, 229, 0.2),
-        0 0 60px rgba(79, 70, 229, 0.15);
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 60px rgba(255, 255, 255, 0.05);
 }
 
 .instructions {
@@ -391,14 +391,14 @@ video.screen-preview {
 
 .voice-selector:hover:not(:disabled) {
     background: rgba(30, 41, 59, 1);
-    border-color: rgba(79, 70, 229, 0.5);
-    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
 .voice-selector:focus {
     outline: none;
-    border-color: rgba(79, 70, 229, 0.7);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 .voice-selector:disabled {
@@ -406,28 +406,29 @@ video.screen-preview {
     cursor: not-allowed;
 }
 
-/* Premium Button Styles */
+/* Premium Button Styles - Monochrome */
 button.control-button {
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
-    padding: 1rem 2rem;
+    padding: 0.875rem 1.75rem;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: #FFFFFF;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
-    letter-spacing: 0.5px;
-    border: 2px solid transparent;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    min-width: 140px;
+    min-width: 130px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
 }
 
 button.control-button::before {
@@ -437,7 +438,7 @@ button.control-button::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
     transition: left 0.5s;
 }
 
@@ -446,43 +447,44 @@ button.control-button:hover::before {
 }
 
 button.control-button.active {
-    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-    border-color: rgba(220, 38, 38, 0.5);
+    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+    border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 
-        0 4px 20px rgba(220, 38, 38, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 button.control-button.inactive {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    border-color: rgba(5, 150, 105, 0.5);
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 
-        0 4px 20px rgba(5, 150, 105, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 button.control-button.share-screen.active {
-    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-    border-color: rgba(234, 88, 12, 0.5);
+    background: linear-gradient(135deg, #5a5a5a 0%, #4a4a4a 100%);
+    border-color: rgba(255, 255, 255, 0.35);
     box-shadow: 
-        0 4px 20px rgba(234, 88, 12, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 button.control-button.share-screen.inactive {
-    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-    border-color: rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 
-        0 4px 20px rgba(37, 99, 235, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 button.control-button:hover:not(:disabled) {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+    border-color: rgba(255, 255, 255, 0.25);
     box-shadow: 
-        0 6px 30px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    filter: brightness(1.1);
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 button.control-button:active:not(:disabled) {
@@ -490,17 +492,18 @@ button.control-button:active:not(:disabled) {
 }
 
 button.control-button:disabled {
-    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-    color: #6b7280;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    color: #4a4a4a;
     cursor: not-allowed;
     box-shadow: none;
-    opacity: 0.6;
+    opacity: 0.5;
+    border-color: rgba(255, 255, 255, 0.05);
 }
 
 button.control-button.permission-denied:disabled {
-    background: linear-gradient(135deg, #7c2d2d 0%, #5a1f1f 100%);
-    color: #fca5a5;
-    border-color: rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #666666;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* --- Chat Interface Styles --- */
@@ -541,7 +544,7 @@ button.control-button.permission-denied:disabled {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(79, 70, 229, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .chat-header h3 {
@@ -588,12 +591,12 @@ button.control-button.permission-denied:disabled {
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: rgba(79, 70, 229, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 3px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
-    background: rgba(79, 70, 229, 0.7);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .chat-empty {
@@ -642,9 +645,10 @@ button.control-button.permission-denied:disabled {
 }
 
 .chat-message.user .message-content {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
     color: #fff;
     border-bottom-right-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .chat-message.ai .message-content {
