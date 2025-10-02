@@ -164,15 +164,15 @@ function AIVisionGuideApp() {
                         ></video>
                         {!isVideoVisible && (
                             <div className="instructions">
-                                <h2>✨ Welcome to AI Vision Guide</h2>
+                                <h2>Welcome to AI Vision Guide</h2>
                                 <p>
-                                    <strong>1.</strong> Ensure your API Key is ready ✓
+                                    <strong>1.</strong> Ensure your API Key is ready
                                     <br/>
-                                    <strong>2.</strong> Click 'Start Session' to connect to your AI guide 🚀
+                                    <strong>2.</strong> Click 'Start Session' to connect to your AI guide
                                     <br />
-                                    <strong>3.</strong> Choose 'Share Screen' or 'Start Camera' to provide visual feed 📹
+                                    <strong>3.</strong> Choose 'Share Screen' or 'Start Camera' to provide visual feed
                                     <br />
-                                    <strong>4.</strong> Your AI guide will describe what it sees and answer questions 💬
+                                    <strong>4.</strong> Your AI guide will describe what it sees and answer questions
                                 </p>
                             </div>
                         )}

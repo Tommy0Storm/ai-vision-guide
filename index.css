@@ -1,12 +1,13 @@
 /* --- Global Styles & Premium Dark Theme --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 300;
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%);
     color: #E8EDF4;
     margin: 0;
@@ -146,24 +147,27 @@ body::before {
 
 .app-header h1 {
     margin: 0;
-    font-size: 2.25rem;
-    font-weight: 800;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
     background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 25%, #c0c0c0 50%, #a0a0a0 75%, #808080 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.5px;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+    text-transform: none;
 }
 
 .motto {
     margin: 0;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: 'Quicksand', sans-serif;
     color: #94a3b8;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    font-style: italic;
+    font-style: normal;
     opacity: 0.9;
     background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 25%, #909090 50%, #707070 100%);
     -webkit-background-clip: text;
@@ -220,6 +224,29 @@ body::before {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.screen-share-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.03) 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.03) 75%, 
+        transparent 100%);
+    border-radius: 24px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.screen-share-container:hover::before {
+    opacity: 1;
+}
+
 .screen-share-container:hover {
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 
@@ -230,14 +257,41 @@ body::before {
 }
 
 .instructions {
-    max-width: 700px;
+    max-width: 750px;
     color: #cbd5e1;
-    padding: 3rem;
+    padding: 3.5rem;
     background: linear-gradient(135deg, rgba(25, 25, 25, 0.5) 0%, rgba(15, 15, 15, 0.6) 50%, rgba(20, 20, 20, 0.5) 100%);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
     animation: fadeInUp 0.6s ease-out;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 0 80px rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.instructions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.instructions::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
 @keyframes fadeInUp {
@@ -253,21 +307,34 @@ body::before {
 
 .instructions h2 {
     color: #f8fafc;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    font-weight: 700;
+    margin-bottom: 2rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
     background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 30%, #b0b0b0 70%, #909090 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: 0.5px;
+    text-align: center;
 }
 
 .instructions p {
     margin-top: 0;
-    line-height: 2;
-    font-size: 1.05rem;
-    font-weight: 400;
-    color: #cbd5e1;
+    line-height: 2.2;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-family: 'Quicksand', sans-serif;
+    color: #d1d5db;
+    letter-spacing: 0.3px;
+}
+
+.instructions p strong {
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 1.2rem;
+    display: inline-block;
+    min-width: 35px;
 }
 
 video.screen-preview {
@@ -331,10 +398,11 @@ video.screen-preview {
 }
 
 .api-key-status {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     padding: 0.5rem 1rem;
     border-radius: 12px;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
     backdrop-filter: blur(10px);
     border: 1px solid;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -368,9 +436,10 @@ video.screen-preview {
 }
 
 .commentary-status {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     color: #cbd5e1;
-    font-weight: 500;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
@@ -384,9 +453,9 @@ video.screen-preview {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 0.65rem 1rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -412,9 +481,9 @@ video.screen-preview {
 
 /* Premium Button Styles - Monochrome */
 button.control-button {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
     padding: 0.875rem 1.75rem;
     border: none;
     border-radius: 8px;
@@ -555,18 +624,21 @@ button.control-button.permission-denied:disabled {
 
 .chat-header h3 {
     margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
     color: #f8fafc;
+    letter-spacing: 0.5px;
 }
 
 .listening-indicator {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     color: #22c55e;
-    font-weight: 500;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .pulse-dot {
@@ -646,8 +718,11 @@ button.control-button.permission-denied:disabled {
     border-radius: 12px;
     max-width: 85%;
     word-wrap: break-word;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
 }
 
 .chat-message.user .message-content {
